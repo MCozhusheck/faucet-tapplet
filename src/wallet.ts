@@ -10,7 +10,8 @@ export async function submitAndWaitForTransaction(
   provider: TariProvider,
   account: Account,
   instructions: object[],
-  required_substates: SubstateRequirement[]
+  required_substates: SubstateRequirement[],
+  isDryRun: boolean = false
 ) {
   const fee = 2000
   const fee_instructions = [
@@ -29,7 +30,7 @@ export async function submitAndWaitForTransaction(
     inputs: [],
     input_refs: [],
     required_substates,
-    is_dry_run: false,
+    is_dry_run: isDryRun,
     min_epoch: null,
     max_epoch: null,
   }

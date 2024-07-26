@@ -32,7 +32,7 @@ export const defaultSecondToken: Token = {
   balance: 0,
 }
 
-export async function takeFreeCoins(provider: TariProvider, faucet_component: string) {
+export async function takeFreeCoins(provider: TariProvider, faucet_component: string, isDryRun: boolean = false) {
   try {
     const account = await provider.getAccount()
     const instructions = [
@@ -58,7 +58,13 @@ export async function takeFreeCoins(provider: TariProvider, faucet_component: st
     ]
     const required_substates = [{ substate_id: account.address }, { substate_id: faucet_component }]
 
-    const result = await wallet.submitAndWaitForTransaction(provider, account, instructions, required_substates)
+    const result = await wallet.submitAndWaitForTransaction(
+      provider,
+      account,
+      instructions,
+      required_substates,
+      isDryRun
+    )
 
     return result
   } catch (error) {
@@ -126,6 +132,8 @@ export async function initFaucets(provider: TariProvider): Promise<InitTokensRes
       symbol: SECOND_TOKEN_SYMBOL,
       balance: 0,
     }
+
+    console.log(firstToken, secondToken)
 
     return {
       firstToken,
