@@ -73,6 +73,10 @@ function App() {
 
   return (
     <Box display="flex" flexDirection="column" justifyContent="center" alignItems="center" width="100%">
+      <Typography variant="h4" sx={{ marginBottom: 3 }}>
+        {" "}
+        Tari Faucet{" "}
+      </Typography>
       <Paper variant="outlined" elevation={0} sx={{ padding: 3, borderRadius: 4, marginBottom: 3, width: "20%" }}>
         <Stack direction="column" spacing={2}>
           {/* <Button variant="contained" sx={{ width: "100%" }} onClick={() => initFaucets(provider.current)}>

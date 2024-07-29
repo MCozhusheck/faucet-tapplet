@@ -1,6 +1,6 @@
 {
   "name": "faucet-tapplet",
-  "version": "0.0.2",
+  "version": "0.0.6",
   "type": "module",
   "description": "Faucet tapplet",
   "main": "dist/index.html",
